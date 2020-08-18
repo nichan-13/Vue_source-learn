@@ -28,7 +28,16 @@ let patch = init([]);
 // h() 函数，用来创建VNode
 // 第一个参数：标签+选择器(#->id选择器 .-> 类选择器)
 // 第二个参数：如果是字符串，就是标签中的内容
-let vnode = h('div#container.cls','Hello World');
+let vnode = h('div#container.cls', {
+  hook: {
+    init (vnode) {
+      console.log(vnode.elm);
+    },
+    create (emptyVnode, vnode) {
+      console.log(vnode.elm);
+    }
+  }
+}, 'Hello World');
 
 // 获取页面的真实dom
 let app = document.querySelector('#app');

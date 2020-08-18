@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue基础</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>差值表达式</h1>
+      <h3>{{ message }}</h3>
+      <h3>{{ count }}</h3>
+      <h1>v-text</h1>
+      <div v-text="message"></div>
+      <h1>v-model</h1>
+      <input type="text" v-model="message">
+      <input type="text" v-model="count">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "Hello Vue!",
+          count: 20
+        }
+      });
+    </script>
+  </body>
+</html>

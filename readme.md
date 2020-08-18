@@ -6,7 +6,7 @@ Vue.js源码学习
 
 
 
-#### 构建及启动
+#### 一、`/snabbdom-demo` 构建及启动
 
 - 初始化项目
   
@@ -37,17 +37,11 @@ Vue.js源码学习
   $ yarn add snabbdom@0.7.4 / $ npm i snabbdom@0.7.4
   ```
 
-- 运行项目
+------
 
-  ```
-  $ npm run dev
-  ```
+#### 二、手写 Vue.js 响应式框架
 
-- 访问地址
-
-  \- http://localhost:1234
-
-- **注意：**
-
-  查看不同的demo需要将 `index.html` 中修改引入相应的js文件
+- `/js` 目录下
+  - **Vue2** 实现响应式 -- defineProperty (demo02-03)
+  - **Vue3** 实现响应式 -- Proxy (demo04)
 
