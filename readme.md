@@ -6,7 +6,11 @@ Vue.js源码学习
 
 
 
-#### 一、`/snabbdom-demo` 构建及启动
+#### 一、Virtual DOM 的实现
+
+> *Snabbdom* 是一个虚拟 DOM 库，专注提供简单、模块性的体验，以及强大的功能和性能。
+
+##### `/snabbdom-demo` 构建及启动
 
 - 初始化项目
   
