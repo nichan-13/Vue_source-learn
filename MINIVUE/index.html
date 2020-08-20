@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>差值表达式</h1>
+      <h3>{{ msg }}</h3>
+      <h3>{{ count }}</h3>
+      <h1>v-text</h1>
+      <div v-text="msg"></div>
+      <h1>v-model</h1>
+      <input type="text" v-model="msg" />
+      <input type="text" v-model="count" />
+    </div>
+    <script src="./js/observer.js"></script>
+    <script src="./js/compiler.js"></script>
+    <script src="./js/vue.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          msg: "Hello Vue",
+          count: 100,
+          // 定义data属性为对象
+          person: {
+            name: 'haha'
+          }
+        },
+      });
+      // 打印查看 vm 对象
+      console.log(vm);
+      console.log(vm.msg);
+
+      // 给 msg 重新赋值，为一个新的对象
+      vm.msg = { test: 'Hello' };
+    </script>
+  </body>
+</html>
