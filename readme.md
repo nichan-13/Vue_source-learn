@@ -61,5 +61,7 @@ Vue.js源码学习
   `/js` 
 
   - Vue
-  - Observer
-  - Compiler
+  - Observer -- 数据劫持
+  - Compiler -- 解析指令
+  - Dep -- 发布者
+  - Watcher -- 观察者

@@ -61,17 +61,28 @@ class Compile {
     })
   }
   update(node, key, attrName) {
-    console.log(attrName);
+    // console.log(attrName);
     let updateFn = this[attrName + 'Updater'];
-    updateFn && updateFn(node, this.vm[key]);
+    updateFn && updateFn.call(this, node, this.vm[key], key);
   }
   // 处理 v-text 指令
-  textUpdater(node, value) {
+  textUpdater(node, value, key) {
     node.textContent = value;
+    new Watcher(this.vm, key, newValue => {
+      node.textContent = newValue;
+    });
   }
   // 处理 v-model 指令
-  modelUpdater(node,value) {
+  modelUpdater(node, value, key) {
     node.value = value;
+    new Watcher(this.vm , key, newValue => {
+      node.value = newValue;
+    });
+
+    // 双向绑定（为表单元素绑定事件）
+    node.addEventListener('input', () => {
+      this.vm[key] = node.value;
+    });
   }
 
   // 编译文本节点，处理差值表达式
@@ -85,6 +96,11 @@ class Compile {
     if (reg.test(value)) {
       let key = RegExp.$1.trim();
       node.textContent = value.replace(reg, this.vm[key]);
+
+      // 创建watcher对象，当数据改变更新视图
+      new Watcher(this.vm, key, newValue => {
+        node.textContent = newValue;
+      })
     }
   }
 

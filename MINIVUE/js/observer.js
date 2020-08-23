@@ -28,6 +28,10 @@ class Observer {
 
   defineReactive(obj, key, val) {
     let that = this;
+
+    // 为每个属性创建 Dep 对象收集依赖，并在set方法中发送通知
+    let dep = new Dep();
+
     // 如果val是对象，把val内部的属性转换成响应式数据
     this.walk(val);
 
@@ -35,10 +39,13 @@ class Observer {
       enumerable: true,
       configurable: true,
       get() {
-        return val;
+        // 收集依赖
+        Dep.target && dep.addSub(Dep.target);
+
         // 为什么需要传递第三个参数 val？
         // return obj[key];  // Uncaught RangeError: Maximum call stack size exceeded
         // 直接调用 obj[key] 会造成死递归
+        return val;
       },
       set(newValue) {
         if (newValue === val) {
@@ -51,6 +58,7 @@ class Observer {
         that.walk(newValue);
 
         // 发送通知
+        dep.notify();
       }
     })
   }

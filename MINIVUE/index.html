@@ -16,6 +16,9 @@
       <input type="text" v-model="msg" />
       <input type="text" v-model="count" />
     </div>
+
+    <script src="./js/dep.js"></script>
+    <script src="./js/watcher.js"></script>
     <script src="./js/observer.js"></script>
     <script src="./js/compiler.js"></script>
     <script src="./js/vue.js"></script>
@@ -32,11 +35,11 @@
         },
       });
       // 打印查看 vm 对象
-      console.log(vm);
+      // console.log(vm);
       console.log(vm.msg);
 
       // 给 msg 重新赋值，为一个新的对象
-      vm.msg = { test: 'Hello' };
+      // vm.msg = { test: 'Hello' };
     </script>
   </body>
 </html>
