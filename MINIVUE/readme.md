@@ -6,7 +6,11 @@
 
 ### 整体分析
 
+<<<<<<< HEAD
 ![vue.png](https://github.com/nichan-13/Vue_source-learn/blob/master/MINIVUE/img/vue.png)
+=======
+![](./img/vue.png)
+>>>>>>> f8c224aa13ce517d1981e666cbf9587a84e54f1d
 
 ​		
 
@@ -24,8 +28,11 @@
   - $options
   - $el
   - $data
+  
     ​	
+    
   - _proxyData()
+  
     ​		
 
 ### Observer -- 数据劫持
@@ -40,6 +47,7 @@
    Observer
   - walk(data)
   - defineReactive(data, key, value)
+  
     ​		
 
 ### Compiler -- 解析指令
@@ -54,7 +62,9 @@
    Compiler
   - el
   - vm
+  
     ​		
+    
   - compile(el)
   - compileElement(node)
   - compileText(node)
@@ -74,9 +84,12 @@
 
    Dep
   - subs
+  
     ​	
+    
   - addSub(sub)
   - notify()
+  
     ​	
 
 ### Watcher -- 观察者
@@ -92,5 +105,7 @@
   - key
   - cb
   - oldValue
+  
     ​	
+    
   - update()
