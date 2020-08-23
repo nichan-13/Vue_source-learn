@@ -6,7 +6,7 @@
 
 ### 整体分析
 
-![](.\img\vue.png)
+![](./img/vue.png)
 
 ​	
 
@@ -24,8 +24,11 @@
   - $options
   - $el
   - $data
+  
     ​	
+    
   - _proxyData()
+  
     ​		
 
 ### Observer -- 数据劫持
@@ -40,6 +43,7 @@
    Observer
   - walk(data)
   - defineReactive(data, key, value)
+  
     ​		
 
 ### Compiler -- 解析指令
@@ -54,7 +58,9 @@
    Compiler
   - el
   - vm
+  
     ​		
+    
   - compile(el)
   - compileElement(node)
   - compileText(node)
@@ -74,9 +80,12 @@
 
    Dep
   - subs
+  
     ​	
+    
   - addSub(sub)
   - notify()
+  
     ​	
 
 ### Watcher -- 观察者
@@ -92,5 +101,7 @@
   - key
   - cb
   - oldValue
+  
     ​	
+    
   - update()
