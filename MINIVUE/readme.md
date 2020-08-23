@@ -6,13 +6,9 @@
 
 ### 整体分析
 
-<<<<<<< HEAD
-![vue.png](https://github.com/nichan-13/Vue_source-learn/blob/master/MINIVUE/img/vue.png)
-=======
-![](./img/vue.png)
->>>>>>> f8c224aa13ce517d1981e666cbf9587a84e54f1d
+[![vue.png](https://z4a.net/images/2020/08/23/vue.png)](https://z4a.net/image/T84mDk)
 
-​		
+​			
 
 ### Vue
 
