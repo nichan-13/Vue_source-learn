@@ -6,9 +6,9 @@
 
 ### 整体分析
 
-![](.\img\vue.png)
+![vue.png](https://github.com/nichan-13/Vue_source-learn/blob/master/MINIVUE/img/vue.png)
 
-​	
+​		
 
 ### Vue
 
