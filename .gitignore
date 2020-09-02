@@ -2,6 +2,7 @@
 node_modules
 dist
 .cache
+.nuxt
 
 
 # local env files
