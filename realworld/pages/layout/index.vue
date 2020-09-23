@@ -12,39 +12,47 @@
             <!-- <a class="nav-link active" href="">Home</a> -->
             <nuxt-link class="nav-link" to="/" exact>首页</nuxt-link>
           </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href>
+
+          <!-- 登录后显示 -->
+          <template v-if="user">
+            <li class="nav-item">
+              <!-- <a class="nav-link" href>
               <i class="ion-compose"></i>&nbsp;New Post
-            </a>-->
-            <nuxt-link class="nav-link" to="/editor">
-              <i class="ion-compose"></i>&nbsp;发布
-            </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href>
+              </a>-->
+              <nuxt-link class="nav-link" to="/editor">
+                <i class="ion-compose"></i>&nbsp;发布
+              </nuxt-link>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href>
               <i class="ion-gear-a"></i>&nbsp;Settings
-            </a>-->
-            <nuxt-link class="nav-link" to="/settings">
-              <i class="ion-gear-a"></i>&nbsp;设置
-            </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href>Sign up</a> -->
-            <nuxt-link class="nav-link" to="/register">注册</nuxt-link>
-          </li>
-          <li class="nav-item">
-            <!-- <a class="nav-link" href>Sign up</a> -->
-            <nuxt-link class="nav-link" to="/login">登录</nuxt-link>
-          </li>
-          <li class="nav-item">
-            <nuxt-link class="nav-link" to="/profile/123">
-              <img
-                class="user-pic"
-                src="https://s0.lgstatic.com/i/image/M00/08/22/Ciqc1F66VBOAVVXMAACBSU_X5FQ392.png"
-              />
-              Ooooh
-            </nuxt-link>
-          </li>
+              </a>-->
+              <nuxt-link class="nav-link" to="/settings">
+                <i class="ion-gear-a"></i>&nbsp;设置
+              </nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link class="nav-link" to="/profile/123">
+                <img
+                  class="user-pic"
+                  :src= "user.image"
+                />
+                {{ user.username }}
+              </nuxt-link>
+            </li>
+          </template>
+
+          <!-- 未登录显示 -->
+          <template v-else>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href>Sign up</a> -->
+              <nuxt-link class="nav-link" to="/register">注册</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <!-- <a class="nav-link" href>Sign up</a> -->
+              <nuxt-link class="nav-link" to="/login">登录</nuxt-link>
+            </li>
+          </template>
         </ul>
       </div>
     </nav>
@@ -69,7 +77,12 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "LayoutIndex",
+  computed: {
+    ...mapState(["user"]),
+  },
 };
 </script>

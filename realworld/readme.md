@@ -34,7 +34,7 @@
 $ mkdir realworld
 $ cd realworld/
 $ npm init -y
-$ npm i nuxt
+$ npm i nuxt --save
 ```
 
 ```
@@ -82,17 +82,23 @@ $ npm i nuxt
 
 - `nuxt.config.js` -- 自定义路由表规则
 
-  - 扩展`Nuxt.js`创建的路由
+  - 扩展Nuxt创建的路由
 
     https://zh.nuxtjs.org/api/configuration-router#extendroutes
 
 - `pages/home/index.vue` -- 首页
+
 - `pages/login/index.vue` -- 登录注册
   - login
   - register
+  
 - `pages/profile/index.vue` -- 用户主页
+
 - `pages/editor/index.vue` -- 文章发布页面
+
 - `pages/article/index.vue` -- 文章详情页面
+
+  ​		
 
 #### 处理顶部导航链接
 
@@ -113,13 +119,97 @@ $ npm i nuxt
       }
     }
     ```
+    
+    ​	
 
 #### 封装请求模块
 
 - 安装 `axios`
 
   ```
-  $ npm i axios
+  $ npm i axios --save
   ```
 
 - `utils/request.js` -- 基于 axios 封装的模块
+
+  ​	
+
+### 登陆和请求模块
+
+#### 封装请求方法
+
+请求方法封装成模块，均放在 `api` 下
+
+- `user.js` -- 登陆和注册
+
+  ​	
+
+#### 登录状态存储
+
+- `store/index.js` -- vuex 保存登录状态
+
+  ​	
+
+#### 登录状态持久化
+
+防止页面刷新数据丢失，利用**cookie**进行存储
+
+- 安装 `js-cookie ` -- 把数据存储在**cookie**中
+
+  ```
+   $ npm i js-cookie --save
+  ```
+
+- 导入 `js-cookie` (只在客户端加载)
+
+  ```
+  // process.client -- Nuxt判断运行在客户端还是服务端
+  const Cookie = process.client ? require('js-cookie') : undefined;
+  ```
+
+  ​		
+
+- 安装 `cookieparser` -- 把**cookie**字符串转为**js**对象
+
+  ```
+  $ npm i cookieparser --save
+  ```
+
+- 导入 `cookieparser` (只在服务端加载)
+
+  ```
+  // process.server -- Nuxt判断是否运行在服务端
+  const cookieparser = process.server ? require('cookieparser') : undefined;
+  ```
+
+  ​		
+
+### 处理导航栏链接展示
+
+1. 将导航栏链接分为**未登录显示**和**登录后显示**两部分
+
+2. 通过 `Vuex` -- **mapState** 判断登录状态 
+
+   ​	
+
+### 页面访问权限
+
+防止用户在未登录的情况下，在地址栏输入访问需要登录才可访问的页面，或在已登录的情况下再次访问登录页面。
+
+利用中间件对页面设置访问权限
+
+- `middleware` 中间件
+
+  - `/authenticated` -- 验证未登录
+  - `/noAuthenticated` -- 验证已登录
+
+- 给每个模块按照使用场景分别加上中间件
+
+  ```
+  export default {
+    middleware: "noAuthenticated",
+    }
+  ```
+
+  
+
